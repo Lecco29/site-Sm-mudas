@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ornamentais - Mudas Herculândia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+    <header class="bg-white shadow-lg fixed top-0 left-0 w-full z-30 border-b border-green-100">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-green-700 tracking-tight">Mudas Herculândia</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Home</a>
+                <a href="sobre.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Sobre Nós</a>
+                <a href="contato.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Contato</a>
+                <a href="contato.html" class="ml-4 px-5 py-2 rounded-lg bg-green-700 text-white font-bold shadow hover:bg-yellow-500 hover:text-green-900 transition">Fale Conosco</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-green-800 hover:text-yellow-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobileMenu" class="fixed inset-0 bg-white bg-opacity-95 z-40 flex-col items-center justify-center hidden p-8">
+            <button id="closeMenu" class="absolute top-6 right-6 text-green-800 hover:text-yellow-600">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <nav class="flex flex-col space-y-12 items-center justify-center h-full w-full pt-16">
+                <a href="index.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Home</a>
+                <a href="sobre.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Sobre Nós</a>
+                <a href="contato.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Contato</a>
+                <a href="contato.html" class="mt-8 px-8 py-3 rounded-xl bg-green-700 text-white font-bold shadow hover:bg-yellow-500 hover:text-green-900 transition text-xl">Fale Conosco</a>
+                <a href="frutiferas.html" class="mt-8 px-8 py-3 rounded-xl bg-yellow-500 text-green-900 font-bold shadow hover:bg-green-700 hover:text-white transition text-xl">Catálogo de Mudas</a>
+            </nav>
+        </div>
+    </header>
+    <section class="pt-32 pb-20 bg-[#e8f5e9] min-h-screen">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-extrabold text-green-800 mb-12 text-center">Ornamentais</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
+                    <img src="images/muda.jpg" alt="Palmeira" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Palmeira</h3>
+                        <p class="text-gray-600 mb-6 text-center">Muda de palmeira de alta qualidade.</p>
+                        <button class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition">Solicitar Orçamento</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
+                    <img src="images/2.jpg" alt="Samambaia" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Samambaia</h3>
+                        <p class="text-gray-600 mb-6 text-center">Muda de samambaia de alta qualidade.</p>
+                        <button class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition">Solicitar Orçamento</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
+                    <img src="images/Mudas.jpg" alt="Bromélia" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Bromélia</h3>
+                        <p class="text-gray-600 mb-6 text-center">Muda de bromélia de alta qualidade.</p>
+                        <button class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition">Solicitar Orçamento</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
+                    <img src="images/muda.jpg" alt="Orquídea" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Orquídea</h3>
+                        <p class="text-gray-600 mb-6 text-center">Muda de orquídea de alta qualidade.</p>
+                        <button class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition">Solicitar Orçamento</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
+                    <img src="images/2.jpg" alt="Antúrio" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Antúrio</h3>
+                        <p class="text-gray-600 mb-6 text-center">Muda de antúrio de alta qualidade.</p>
+                        <button class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition">Solicitar Orçamento</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
+                    <img src="images/Mudas.jpg" alt="Espada de São Jorge" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Espada de São Jorge</h3>
+                        <p class="text-gray-600 mb-6 text-center">Muda de espada de São Jorge de alta qualidade.</p>
+                        <button class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition">Solicitar Orçamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-green-900 text-white py-12 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg font-semibold">&copy; 2024 Mudas Herculândia. Todos os direitos reservados.</p>
+            <p class="text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (14) 99883-5045</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+    document.getElementById('menuBtn').onclick = function() {
+        document.getElementById('mobileMenu').style.display = 'flex';
+    };
+    document.getElementById('closeMenu').onclick = function() {
+        document.getElementById('mobileMenu').style.display = 'none';
+    };
+    </script>
+</body>
+</html> 

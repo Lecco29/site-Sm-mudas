@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM Mudas - Viveiro de Mudas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #e0f7fa 0%, #e8f5e9 100%);
+        }
+        .btn-gold {
+            background: linear-gradient(90deg, #ffd600 0%, #ffb300 100%);
+            color: #fff;
+            box-shadow: 0 4px 16px 0 rgba(255, 214, 0, 0.15);
+        }
+        .btn-gold:hover {
+            background: linear-gradient(90deg, #ffb300 0%, #ffd600 100%);
+            color: #fff;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-animate {
+            transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        .card-animate:hover {
+            transform: scale(1.04) translateY(-6px);
+            box-shadow: 0 8px 32px 0 rgba(34,197,94,0.18), 0 2px 8px 0 rgba(0,0,0,0.10);
+        }
+        .btn-animate {
+            transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s cubic-bezier(.4,0,.2,1);
+        }
+        .btn-animate:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px 0 rgba(255, 214, 0, 0.15);
+        }
+        .mobile-menu-animate {
+            transition: opacity 0.4s, transform 0.4s;
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+        .mobile-menu-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed top-0 left-0 w-full z-30 border-b border-green-100">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-extrabold text-green-700 tracking-tight">SM Mudas</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Home</a>
+                <a href="sobre.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Sobre Nós</a>
+                <a href="contato.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Contato</a>
+                <a href="https://wa.me/55999999999" target="_blank" class="ml-4 px-5 py-2 rounded-lg bg-green-700 text-white font-bold shadow hover:bg-yellow-500 hover:text-green-900 transition btn-animate">Fale Conosco</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-green-800 hover:text-yellow-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <div id="mobileMenu" class="fixed inset-0 bg-white bg-opacity-95 z-40 flex-col items-center justify-center hidden p-8 mobile-menu-animate">
+            <button id="closeMenu" class="absolute top-6 right-6 text-green-800 hover:text-yellow-600">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <nav class="flex flex-col space-y-12 items-center justify-center h-full w-full pt-16">
+                <a href="index.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Home</a>
+                <a href="sobre.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Sobre Nós</a>
+                <a href="contato.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Contato</a>
+                <a href="https://wa.me/55999999999" target="_blank" class="mt-8 px-8 py-3 rounded-xl bg-green-700 text-white font-bold shadow hover:bg-yellow-500 hover:text-green-900 transition text-xl">Fale Conosco</a>
+                <a href="frutiferas.html" class="mt-8 px-8 py-3 rounded-xl bg-yellow-500 text-green-900 font-bold shadow hover:bg-green-700 hover:text-white transition text-xl">Catálogo de Mudas</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 relative overflow-hidden" style="background: linear-gradient(rgba(34,49,63,0.65), rgba(34,49,63,0.65)), url('images/Mudas.jpg') center/cover no-repeat;">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-8">
+            <div class="md:w-1/2 flex flex-col items-start md:items-start">
+                <h1 class="text-5xl font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
+                    Tradição no cultivo de mudas<br>
+                    <span class="text-yellow-600">com Entrega em Diversas Cidades</span>
+                </h1>
+                <p class="text-xl text-gray-100 mb-4 font-medium">
+                    Entregamos mudas de alta qualidade diretamente na sua casa, em várias cidades da região. Escolha suas plantas e receba com comodidade e confiança!
+                </p>
+                <p class="text-base text-gray-200 mb-8">
+                    Atendemos residências, chácaras, sítios e projetos paisagísticos.<br>Consulte disponibilidade para sua cidade!
+                </p>
+                <a href="https://wa.me/55999999999" target="_blank" class="bg-green-700 text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:bg-green-800 transition-all duration-300 btn-animate">
+                    Entrar em Contato
+                </a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md h-96 sm:h-96 min-w-[220px] min-h-[220px] overflow-hidden rounded-2xl shadow-xl bg-white flex items-center justify-center">
+                    <div class="carousel-container absolute w-full h-full top-0 left-0">
+                        <div class="carousel-slide absolute w-full h-full transition-all duration-700 flex items-center justify-center scale-100 opacity-100">
+                            <img src="images/oliveira.jpg" alt="Oliveira" class="w-full h-full object-cover rounded-2xl transition-transform duration-700">
+                            <div class="absolute bottom-0 left-0 right-0 p-0 rounded-b-2xl" style="background: linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);">
+                                <div class="p-4">
+                                    <h3 class="text-xl font-bold text-white drop-shadow">Oliveira</h3>
+                                    <p class="text-sm text-gray-100">Muda de oliveira de alta qualidade</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide absolute w-full h-full transition-all duration-700 opacity-0 scale-95 flex items-center justify-center">
+                            <img src="images/jabuticaba.jpg" alt="Jabuticaba" class="w-full h-full object-cover rounded-2xl transition-transform duration-700">
+                            <div class="absolute bottom-0 left-0 right-0 p-0 rounded-b-2xl" style="background: linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);">
+                                <div class="p-4">
+                                    <h3 class="text-xl font-bold text-white drop-shadow">Jabuticaba</h3>
+                                    <p class="text-sm text-gray-100">Muda de jabuticaba de alta qualidade</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-slide absolute w-full h-full transition-all duration-700 opacity-0 scale-95 flex items-center justify-center">
+                            <img src="images/uva.jpg" alt="Uvas" class="w-full h-full object-cover rounded-2xl transition-transform duration-700">
+                            <div class="absolute bottom-0 left-0 right-0 p-0 rounded-b-2xl" style="background: linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);">
+                                <div class="p-4">
+                                    <h3 class="text-xl font-bold text-white drop-shadow">Uvas</h3>
+                                    <p class="text-sm text-gray-100">Muda de uvas de alta qualidade</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossos Produtos Section -->
+    <section class="py-16 bg-[#e8f5e9] fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-center text-green-800 mb-12 tracking-tight">Nossos Produtos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                <div class="bg-white rounded-2xl shadow-xl p-0 flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 card-animate">
+                    <img src="images/frutiferas.jpg" alt="Frutíferas" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Frutíferas</h3>
+                        <p class="text-gray-600 mb-6 text-center">Árvores frutíferas para seu jardim ou pomar.</p>
+                        <a href="frutiferas.html" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-green-800 transition">Ver produtos &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-0 flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 card-animate">
+                    <img src="images/nativas.jpg" alt="Nativas" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Nativas</h3>
+                        <p class="text-gray-600 mb-6 text-center">Espécies nativas brasileiras para reflorestamento.</p>
+                        <a href="nativas.html" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-green-800 transition">Ver produtos &rarr;</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-0 flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 card-animate">
+                    <img src="images/ornamentais.jpg" alt="Ornamentais" class="w-full h-48 object-cover rounded-t-2xl">
+                    <div class="p-8 flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-green-800 mb-2">Ornamentais</h3>
+                        <p class="text-gray-600 mb-6 text-center">Plantas ornamentais para decoração.</p>
+                        <a href="ornamentais.html" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-green-800 transition">Ver produtos &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white fade-in">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-extrabold text-center text-green-800 mb-12 tracking-tight">Por que escolher a SM Mudas?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center hover:shadow-2xl transition-all duration-300 card-animate">
+                    <img src="images/muda.jpg" alt="Qualidade Garantida" class="w-20 h-20 object-cover rounded-full mb-4 border-4 border-green-100 shadow">
+                    <h3 class="text-xl font-bold mb-2 text-green-700">Qualidade Garantida</h3>
+                    <p class="text-gray-600 text-center">Todas as nossas mudas são cultivadas com os mais altos padrões de qualidade.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center hover:shadow-2xl transition-all duration-300 card-animate">
+                    <img src="images/2.jpg" alt="Entrega Rápida" class="w-20 h-20 object-cover rounded-full mb-4 border-4 border-green-100 shadow">
+                    <h3 class="text-xl font-bold mb-2 text-green-700">Entrega Rápida</h3>
+                    <p class="text-gray-600 text-center">Entregamos em todo o Brasil com rapidez e segurança.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center hover:shadow-2xl transition-all duration-300 card-animate">
+                    <img src="images/Mudas.jpg" alt="Suporte Especializado" class="w-20 h-20 object-cover rounded-full mb-4 border-4 border-green-100 shadow">
+                    <h3 class="text-xl font-bold mb-2 text-green-700">Suporte Especializado</h3>
+                    <p class="text-gray-600 text-center">Nossa equipe está sempre pronta para ajudar com suas dúvidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-900 text-white py-12 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg font-semibold">&copy; 2024 SM Mudas. Todos os direitos reservados.</p>
+            <p class="text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (99) 99999-9999</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    document.getElementById('menuBtn').onclick = function() {
+        document.getElementById('mobileMenu').style.display = 'flex';
+    };
+    document.getElementById('closeMenu').onclick = function() {
+        document.getElementById('mobileMenu').style.display = 'none';
+    };
+
+    // Carousel functionality
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.style.opacity = '1';
+                slide.style.transform = 'scale(1)';
+                slide.style.zIndex = '1';
+            } else {
+                slide.style.opacity = '0';
+                slide.style.transform = 'scale(0.95)';
+                slide.style.zIndex = '0';
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    showSlide(currentSlide);
+    setInterval(nextSlide, 3000);
+
+    // Fade-in on scroll
+    function onScrollFadeIn() {
+        document.querySelectorAll('.fade-in').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', onScrollFadeIn);
+    window.addEventListener('DOMContentLoaded', onScrollFadeIn);
+    </script>
+</body>
+</html> 
