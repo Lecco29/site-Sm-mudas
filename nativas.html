@@ -3,27 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nativas - SM Mudas</title>
+    <title>Árvores Nativas - SM Mudas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .filter-btn.active {
+            background-color: #15803d;
+            color: white;
+        }
+        .tree-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .tree-details.expanded {
+            max-height: 500px;
+        }
+    </style>
 </head>
-<body class="bg-white min-h-screen flex flex-col">
-    <header class="bg-white shadow-lg fixed top-0 left-0 w-full z-30 border-b border-green-100">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-extrabold text-green-700 tracking-tight">SM Mudas</a>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="index.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Home</a>
-                <a href="sobre.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Sobre Nós</a>
-                <a href="contato.html" class="text-green-800 hover:text-yellow-600 font-semibold transition">Contato</a>
-                <a href="contato.html" class="ml-4 px-5 py-2 rounded-lg bg-green-700 text-white font-bold shadow hover:bg-yellow-500 hover:text-green-900 transition">Fale Conosco</a>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-30">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-green-700 nav-link">SM Mudas</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="text-green-800 hover:text-yellow-600 nav-link">Home</a>
+                <a href="sobre.html" class="text-green-800 hover:text-yellow-600 nav-link">Sobre Nós</a>
+                <a href="contato.html" class="text-green-800 hover:text-yellow-600 nav-link">Contato</a>
+                <a href="https://wa.me/14998939719" target="_blank" class="px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-yellow-500 hover:text-green-900 transition-all duration-300">Fale Conosco</a>
             </div>
-            <button id="menuBtn" class="md:hidden text-green-800 hover:text-yellow-600 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="menuBtn" class="md:hidden text-green-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </nav>
-        <div id="mobileMenu" class="fixed inset-0 bg-white bg-opacity-95 z-40 flex-col items-center justify-center hidden p-8">
+        <div id="mobileMenu" class="fixed inset-0 bg-white bg-opacity-95 z-40 flex-col items-center justify-center hidden p-8 mobile-menu-animate">
             <button id="closeMenu" class="absolute top-6 right-6 text-green-800 hover:text-yellow-600">
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -33,73 +67,59 @@
                 <a href="index.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Home</a>
                 <a href="sobre.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Sobre Nós</a>
                 <a href="contato.html" class="text-2xl text-green-800 hover:text-yellow-600 font-bold">Contato</a>
-                <a href="contato.html" class="mt-8 px-8 py-3 rounded-xl bg-green-700 text-white font-bold shadow hover:bg-yellow-500 hover:text-green-900 transition text-xl">Fale Conosco</a>
+                <a href="https://wa.me/14998939719" target="_blank" class="mt-8 px-8 py-3 rounded-xl bg-green-700 text-white font-bold shadow hover:bg-yellow-500 hover:text-green-900 transition text-xl">Fale Conosco</a>
                 <a href="frutiferas.html" class="mt-8 px-8 py-3 rounded-xl bg-yellow-500 text-green-900 font-bold shadow hover:bg-green-700 hover:text-white transition text-xl">Catálogo de Mudas</a>
             </nav>
         </div>
     </header>
-    <section class="pt-32 pb-20 bg-[#e8f5e9] min-h-screen">
-        <div class="container mx-auto px-4">
-            <h1 class="text-4xl font-extrabold text-green-800 mb-12 text-center">Nativas</h1>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
-                    <img src="images/muda.jpg" alt="Ipê Amarelo" class="w-full h-48 object-cover rounded-t-2xl">
-                    <div class="p-8 flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-green-800 mb-2">Ipê Amarelo</h3>
-                        <p class="text-gray-600 mb-6 text-center">Muda de ipê amarelo de alta qualidade.</p>
-                        <a href="https://wa.me/55999999999" target="_blank" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition block text-center">Solicitar Orçamento</a>
-                    </div>
+    <main class="container mx-auto px-4 pt-32 pb-16">
+        <h1 class="text-4xl font-bold text-green-800 mb-8 text-center">Catálogo de Árvores Nativas</h1>
+        
+        <div class="mb-8 space-y-4">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="relative w-full md:w-96">
+                    <input type="text" id="searchInput" placeholder="Buscar árvores..." 
+                           class="w-full px-4 py-2 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
                 </div>
-                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
-                    <img src="images/2.jpg" alt="Pau Brasil" class="w-full h-48 object-cover rounded-t-2xl">
-                    <div class="p-8 flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-green-800 mb-2">Pau Brasil</h3>
-                        <p class="text-gray-600 mb-6 text-center">Muda de pau brasil de alta qualidade.</p>
-                        <a href="https://wa.me/55999999999" target="_blank" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition block text-center">Solicitar Orçamento</a>
-                    </div>
+                <div class="flex gap-2 flex-wrap justify-center">
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="all">
+                        Todas
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="ornamentais">
+                        Ornamentais
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="medicinais">
+                        Medicinais
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="madeira">
+                        Madeira Nobre
+                    </button>
                 </div>
-                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
-                    <img src="images/Mudas.jpg" alt="Jatobá" class="w-full h-48 object-cover rounded-t-2xl">
-                    <div class="p-8 flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-green-800 mb-2">Jatobá</h3>
-                        <p class="text-gray-600 mb-6 text-center">Muda de jatobá de alta qualidade.</p>
-                        <a href="https://wa.me/55999999999" target="_blank" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition block text-center">Solicitar Orçamento</a>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
-                    <img src="images/muda.jpg" alt="Araucária" class="w-full h-48 object-cover rounded-t-2xl">
-                    <div class="p-8 flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-green-800 mb-2">Araucária</h3>
-                        <p class="text-gray-600 mb-6 text-center">Muda de araucária de alta qualidade.</p>
-                        <a href="https://wa.me/55999999999" target="_blank" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition block text-center">Solicitar Orçamento</a>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
-                    <img src="images/2.jpg" alt="Cedro" class="w-full h-48 object-cover rounded-t-2xl">
-                    <div class="p-8 flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-green-800 mb-2">Cedro</h3>
-                        <p class="text-gray-600 mb-6 text-center">Muda de cedro de alta qualidade.</p>
-                        <a href="https://wa.me/55999999999" target="_blank" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition block text-center">Solicitar Orçamento</a>
-                    </div>
-                </div>
-                <div class="bg-white rounded-2xl shadow-xl flex flex-col items-center hover:shadow-2xl hover:scale-105 transition-all duration-300 mb-8">
-                    <img src="images/Mudas.jpg" alt="Pau Ferro" class="w-full h-48 object-cover rounded-t-2xl">
-                    <div class="p-8 flex flex-col items-center">
-                        <h3 class="text-2xl font-bold text-green-800 mb-2">Pau Ferro</h3>
-                        <p class="text-gray-600 mb-6 text-center">Muda de pau ferro de alta qualidade.</p>
-                        <a href="https://wa.me/55999999999" target="_blank" class="bg-green-700 text-white px-6 py-2 rounded-lg font-semibold shadow hover:bg-yellow-500 hover:text-green-900 transition block text-center">Solicitar Orçamento</a>
-                    </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="text-sm text-gray-600">
+                    <span id="resultCount">0</span> árvores encontradas
                 </div>
             </div>
         </div>
-    </section>
-    <footer class="bg-green-900 text-white py-12 mt-8">
+
+        <div id="treesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+            <!-- Cards will be inserted here by JavaScript -->
+        </div>
+
+        <div id="pagination" class="flex justify-center space-x-2 mt-8">
+            <!-- Pagination buttons will be inserted here by JavaScript -->
+        </div>
+    </main>
+    <footer class="bg-green-900 text-white py-8 mt-8">
         <div class="container mx-auto px-4 text-center">
             <p class="text-lg font-semibold">&copy; 2024 SM Mudas. Todos os direitos reservados.</p>
-            <p class="text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (99) 99999-9999</p>
+            <p class="text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (14) 99893-9719</p>
+            <p class="text-xs text-gray-400 mt-2">Site desenvolvido por <a href="https://tucanotech.com.br/" target="_blank" class="underline hover:text-yellow-400">Tucano Tech</a></p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="nativas.js"></script>
     <script>
     document.getElementById('menuBtn').onclick = function() {
         document.getElementById('mobileMenu').style.display = 'flex';
@@ -107,6 +127,227 @@
     document.getElementById('closeMenu').onclick = function() {
         document.getElementById('mobileMenu').style.display = 'none';
     };
+
+    // Configuration
+    const itemsPerPage = 12;
+    let currentPage = 1;
+    let filteredTrees = [...nativas];
+    let currentFilter = 'all';
+
+    // DOM Elements
+    const treesGrid = document.getElementById('treesGrid');
+    const pagination = document.getElementById('pagination');
+    const searchInput = document.getElementById('searchInput');
+    const resultCount = document.getElementById('resultCount');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    // Create tree card
+    function createTreeCard(tree) {
+        const isOrnamental = tree.descricao.toLowerCase().includes('ornamental');
+        const isMedicinal = tree.descricao.toLowerCase().includes('medicinal');
+        const isNobleWood = tree.descricao.toLowerCase().includes('madeira');
+
+        const whatsappNumber = '14998939719';
+        const message = encodeURIComponent(`Olá, tudo bem? Tenho interesse na muda ${tree.nome}.`);
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+        return `
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in" 
+                 data-ornamental="${isOrnamental}" 
+                 data-medicinal="${isMedicinal}" 
+                 data-noble-wood="${isNobleWood}">
+                <div class="relative">
+                    <img src="${tree.imagem}" alt="${tree.nome}" class="w-full h-48 object-cover">
+                    <div class="absolute top-2 right-2 flex gap-2">
+                        ${isOrnamental ? '<span class="px-2 py-1 bg-purple-500 text-white text-xs rounded-full">Ornamental</span>' : ''}
+                        ${isMedicinal ? '<span class="px-2 py-1 bg-red-500 text-white text-xs rounded-full">Medicinal</span>' : ''}
+                        ${isNobleWood ? '<span class="px-2 py-1 bg-yellow-600 text-white text-xs rounded-full">Madeira Nobre</span>' : ''}
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-green-800 mb-2">${tree.nome}</h3>
+                    <p class="text-gray-600 mb-4">${tree.descricao}</p>
+                    <button onclick="toggleDetails(this)" class="text-green-700 hover:text-green-900 font-medium flex items-center gap-2">
+                        <span>Ver detalhes</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="tree-details mt-4">
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <p><i class="fas fa-sun text-yellow-500"></i> <strong>Clima:</strong> ${getClimateInfo(tree)}</p>
+                            <p><i class="fas fa-ruler-vertical text-blue-500"></i> <strong>Porte:</strong> ${getSizeInfo(tree)}</p>
+                            <p><i class="fas fa-clock text-purple-500"></i> <strong>Crescimento:</strong> ${getGrowthInfo(tree)}</p>
+                        </div>
+                        <a href="${whatsappLink}" 
+                           target="_blank"
+                           class="mt-4 block w-full text-center px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition">
+                            Consultar disponibilidade
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `
+    }
+
+    // Helper functions for tree details
+    function getClimateInfo(tree) {
+        if (tree.nome.toLowerCase().includes('açaí') || tree.nome.toLowerCase().includes('pupunha')) {
+            return 'Tropical Úmido';
+        } else if (tree.nome.toLowerCase().includes('ipê')) {
+            return 'Adaptável';
+        }
+        return 'Tropical';
+    }
+
+    function getSizeInfo(tree) {
+        if (tree.nome.toLowerCase().includes('jequitibá')) {
+            return 'Grande (20-30m)';
+        } else if (tree.nome.toLowerCase().includes('quaresmeira')) {
+            return 'Médio (8-12m)';
+        }
+        return 'Médio-Grande (10-20m)';
+    }
+
+    function getGrowthInfo(tree) {
+        if (tree.nome.toLowerCase().includes('acácia')) {
+            return 'Rápido (2-3 anos)';
+        } else if (tree.nome.toLowerCase().includes('jequitibá')) {
+            return 'Lento (5-7 anos)';
+        }
+        return 'Médio (3-5 anos)';
+    }
+
+    // Toggle tree details
+    function toggleDetails(button) {
+        const details = button.nextElementSibling;
+        const icon = button.querySelector('i');
+        details.classList.toggle('expanded');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+    }
+
+    // Update pagination
+    function updatePagination() {
+        const totalPages = Math.ceil(filteredTrees.length / itemsPerPage);
+        let paginationHTML = '';
+
+        // Previous button
+        paginationHTML += `
+            <button onclick="changePage(${currentPage - 1})" 
+                    class="px-4 py-2 rounded-lg ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        `;
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHTML += `
+                <button onclick="changePage(${i})" 
+                        class="px-4 py-2 rounded-lg ${currentPage === i ? 'bg-green-700 text-white' : 'bg-white text-green-700 hover:bg-green-100'}">
+                    ${i}
+                </button>
+            `;
+        }
+
+        // Next button
+        paginationHTML += `
+            <button onclick="changePage(${currentPage + 1})" 
+                    class="px-4 py-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        `;
+
+        pagination.innerHTML = paginationHTML;
+    }
+
+    // Change page
+    function changePage(page) {
+        const totalPages = Math.ceil(filteredTrees.length / itemsPerPage);
+        if (page < 1 || page > totalPages) return;
+        
+        currentPage = page;
+        displayTrees();
+        updatePagination();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Display trees
+    function displayTrees() {
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageTrees = filteredTrees.slice(start, end);
+
+        treesGrid.innerHTML = pageTrees.map(tree => createTreeCard(tree)).join('');
+        resultCount.textContent = filteredTrees.length;
+        
+        // Trigger fade-in animation
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+        }, 100);
+    }
+
+    // Filter functionality
+    function filterTrees(filter) {
+        currentFilter = filter;
+        filteredTrees = nativas.filter(tree => {
+            const isOrnamental = tree.descricao.toLowerCase().includes('ornamental');
+            const isMedicinal = tree.descricao.toLowerCase().includes('medicinal');
+            const isNobleWood = tree.descricao.toLowerCase().includes('madeira');
+
+            switch(filter) {
+                case 'ornamentais':
+                    return isOrnamental;
+                case 'medicinais':
+                    return isMedicinal;
+                case 'madeira':
+                    return isNobleWood;
+                default:
+                    return true;
+            }
+        });
+
+        // Apply search filter if there's a search term
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm) {
+            filteredTrees = filteredTrees.filter(tree => 
+                tree.nome.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        currentPage = 1;
+        displayTrees();
+        updatePagination();
+    }
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        filteredTrees = nativas.filter(tree => 
+            tree.nome.toLowerCase().includes(searchTerm)
+        );
+
+        // Apply category filter if one is selected
+        if (currentFilter !== 'all') {
+            filterTrees(currentFilter);
+        }
+
+        currentPage = 1;
+        displayTrees();
+        updatePagination();
+    });
+
+    // Filter button click handlers
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            filterTrees(button.dataset.filter);
+        });
+    });
+
+    // Inicialização
+    displayTrees();
+    updatePagination();
+    filterButtons[0].classList.add('active');
     </script>
 </body>
-</html> 
+</html>
