@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantas Ornamentais - SM Mudas</title>
     
+    <link rel="icon" type="image/png" href="images/Logo 1.png">
+
     <!-- Meta Tags -->
     <meta name="description" content="Catálogo de plantas ornamentais da SM Mudas. Encontre palmeiras, arbustos e coníferas para seu jardim.">
     
@@ -55,20 +57,62 @@
         .plant-details.expanded {
             max-height: 500px;
         }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .mobile-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .mobile-title {
+                font-size: 1.75rem;
+                line-height: 2rem;
+            }
+            .mobile-search {
+                width: 100%;
+                max-width: none;
+            }
+            .mobile-filters {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .mobile-filter-btn {
+                font-size: 0.875rem;
+                padding: 0.5rem 0.75rem;
+            }
+            .mobile-card {
+                margin-bottom: 1rem;
+            }
+            .mobile-card-title {
+                font-size: 1.125rem;
+            }
+            .mobile-card-desc {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+            }
+            .mobile-pagination {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+            .mobile-pagination-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/55999999999" 
+    <a href="https://wa.me/14998939719" 
        target="_blank" 
-       class="whatsapp-button bg-[#25D366] text-white p-4 rounded-full shadow-lg"
+       class="whatsapp-button bg-[#25D366] text-white p-4 rounded-full shadow-lg fixed bottom-4 right-4 z-50"
        aria-label="Fale conosco pelo WhatsApp">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
     <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-30">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-green-700 nav-link">SM Mudas</a>
+            <a href="index.html" class="text-xl md:text-2xl font-bold text-green-700 nav-link">SM Mudas</a>
             <div class="hidden md:flex space-x-6 items-center">
                 <a href="index.html" class="text-green-800 hover:text-yellow-600 nav-link">Home</a>
                 <a href="sobre.html" class="text-green-800 hover:text-yellow-600 nav-link">Sobre Nós</a>
@@ -97,39 +141,39 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-4 pt-32 pb-16">
-        <h1 class="text-4xl font-bold text-green-800 mb-8 text-center">Catálogo de Plantas Ornamentais</h1>
+    <main class="container mx-auto px-4 pt-24 md:pt-32 pb-16">
+        <h1 class="mobile-title text-3xl md:text-4xl font-bold text-green-800 mb-6 md:mb-8 text-center">Catálogo de Plantas Ornamentais</h1>
         
-        <div class="mb-8 space-y-4">
-            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-                <div class="relative w-full md:w-96">
+        <div class="mb-6 md:mb-8 space-y-4">
+            <div class="flex flex-col gap-4">
+                <div class="relative w-full mobile-search">
                     <input type="text" 
                            id="searchInput" 
                            placeholder="Buscar plantas..." 
-                           class="w-full px-4 py-2 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                           class="w-full px-4 py-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-base"
                            aria-label="Buscar plantas">
-                    <i class="fas fa-search absolute left-3 top-3 text-gray-400" aria-hidden="true"></i>
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
                 </div>
-                <div class="flex gap-2 flex-wrap justify-center" role="group" aria-label="Filtros de plantas">
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500" 
+                <div class="flex gap-2 mobile-filters justify-center" role="group" aria-label="Filtros de plantas">
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base" 
                             data-filter="all"
                             role="radio"
                             aria-checked="true">
                         Todas
                     </button>
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500" 
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base" 
                             data-filter="palmeiras"
                             role="radio"
                             aria-checked="false">
                         Palmeiras
                     </button>
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500" 
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base" 
                             data-filter="arbustos"
                             role="radio"
                             aria-checked="false">
                         Arbustos
                     </button>
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500" 
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base" 
                             data-filter="coniferas"
                             role="radio"
                             aria-checked="false">
@@ -144,19 +188,19 @@
             </div>
         </div>
 
-        <div id="plantsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+        <div id="plantsGrid" class="mobile-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-8">
             <!-- Cards will be inserted here by JavaScript -->
         </div>
 
-        <div id="pagination" class="flex justify-center space-x-2 mt-8" role="navigation" aria-label="Paginação">
+        <div id="pagination" class="mobile-pagination flex justify-center space-x-1 md:space-x-2 mt-8" role="navigation" aria-label="Paginação">
             <!-- Pagination buttons will be inserted here by JavaScript -->
         </div>
     </main>
 
     <footer class="bg-green-900 text-white py-8 mt-8">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-lg font-semibold">&copy; 2024 SM Mudas. Todos os direitos reservados.</p>
-            <p class="text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (14) 99893-9719</p>
+            <p class="text-base md:text-lg font-semibold">&copy; 2024 SM Mudas. Todos os direitos reservados.</p>
+            <p class="text-sm md:text-base text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (14) 99893-9719</p>
             <p class="text-xs text-gray-400 mt-2">Site desenvolvido por <a href="https://tucanotech.com.br/" target="_blank" class="underline hover:text-yellow-400">Tucano Tech</a></p>
         </div>
     </footer>
@@ -171,7 +215,7 @@
     };
 
     // Configuration
-    const itemsPerPage = 12;
+    const itemsPerPage = window.innerWidth < 768 ? 8 : 12; // Less items on mobile
     let currentPage = 1;
     let filteredPlants = [...ornamentais];
     let currentFilter = 'all';
@@ -196,41 +240,41 @@
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
         return `
-            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in" 
+            <div class="mobile-card bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in" 
                  data-palmeira="${isPalmeira}" 
                  data-arbusto="${isArbusto}" 
                  data-conifera="${isConifera}">
                 <div class="relative">
                     <img src="${plant.imagem}" 
                          alt="${plant.nome}" 
-                         class="w-full h-48 object-cover"
+                         class="w-full h-40 md:h-48 object-cover"
                          loading="lazy">
-                    <div class="absolute top-2 right-2 flex gap-2">
+                    <div class="absolute top-2 right-2 flex gap-1 md:gap-2">
                         ${isPalmeira ? '<span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Palmeira</span>' : ''}
                         ${isArbusto ? '<span class="px-2 py-1 bg-purple-500 text-white text-xs rounded-full">Arbusto</span>' : ''}
                         ${isConifera ? '<span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">Conífera</span>' : ''}
                     </div>
                 </div>
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold text-green-800 mb-2">${plant.nome}</h3>
-                    <p class="text-gray-600 mb-4">${plant.descricao}</p>
+                <div class="p-3 md:p-4">
+                    <h3 class="mobile-card-title text-lg md:text-xl font-semibold text-green-800 mb-2">${plant.nome}</h3>
+                    <p class="mobile-card-desc text-gray-600 mb-3 md:mb-4">${plant.descricao}</p>
                     <button onclick="toggleDetails(this)" 
-                            class="text-green-700 hover:text-green-900 font-medium flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg p-2"
+                            class="text-green-700 hover:text-green-900 font-medium flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-lg p-2 text-sm md:text-base"
                             aria-expanded="false"
                             aria-controls="details-${plant.nome.toLowerCase().replace(/\s+/g, '-')}">
                         <span>Ver detalhes</span>
                         <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div id="details-${plant.nome.toLowerCase().replace(/\s+/g, '-')}" 
-                         class="plant-details mt-4">
+                         class="plant-details mt-3 md:mt-4">
                         <div class="space-y-2 text-sm text-gray-600">
                             <p><i class="fas fa-sun text-yellow-500" aria-hidden="true"></i> <strong>Luminosidade:</strong> ${getLightInfo(plant)}</p>
-                            <p><i class="fas fa-ruler-vertical text-blue-500" aria-hidden="true"></i> <strong>Porte:</strong> ${getSizeInfo(plant)}</p>
+                            <p><i class="fas fa-ruler-vertical text-blue-500" aria-hidden="true"></i> <strong>Tamanho:</strong> ${getSizeInfo(plant)}</p>
                             <p><i class="fas fa-clock text-purple-500" aria-hidden="true"></i> <strong>Crescimento:</strong> ${getGrowthInfo(plant)}</p>
                         </div>
                         <a href="${whatsappLink}" 
                            target="_blank"
-                           class="mt-4 block w-full text-center px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition focus:outline-none focus:ring-2 focus:ring-green-500">
+                           class="mt-3 md:mt-4 block w-full text-center px-3 py-2 md:px-4 md:py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base">
                             Consultar disponibilidade
                         </a>
                     </div>
@@ -241,6 +285,9 @@
 
     // Helper functions for plant details
     function getLightInfo(plant) {
+        if (plant.clima) {
+            return plant.clima;
+        }
         if (plant.nome.toLowerCase().includes('cyca') || plant.nome.toLowerCase().includes('kaizuka')) {
             return 'Meia Sombra';
         } else if (plant.nome.toLowerCase().includes('pata de elefante')) {
@@ -250,19 +297,25 @@
     }
 
     function getSizeInfo(plant) {
-        if (plant.nome.toLowerCase().includes('palmeira azul') || plant.nome.toLowerCase().includes('imperial')) {
-            return 'Grande (15-20m)';
-        } else if (plant.nome.toLowerCase().includes('fênix') || plant.nome.toLowerCase().includes('coqueiro anão')) {
-            return 'Pequeno (2-4m)';
+        if (plant.tamanho) {
+            return plant.tamanho;
         }
-        return 'Médio (4-8m)';
+        if (plant.nome.toLowerCase().includes('palmeira azul') || plant.nome.toLowerCase().includes('imperial')) {
+            return '60-80 cm';
+        } else if (plant.nome.toLowerCase().includes('bambu')) {
+            return '60-80 cm';
+        }
+        return '60-80 cm';
     }
 
     function getGrowthInfo(plant) {
-        if (plant.nome.toLowerCase().includes('podocarpus') || plant.nome.toLowerCase().includes('kaizuka')) {
-            return 'Lento (5-7 anos)';
-        } else if (plant.nome.toLowerCase().includes('primavera')) {
+        if (plant.crescimento) {
+            return plant.crescimento;
+        }
+        if (plant.nome.toLowerCase().includes('bambu')) {
             return 'Rápido (2-3 anos)';
+        } else if (plant.nome.toLowerCase().includes('cyca')) {
+            return 'Muito Lento (8-12 anos)';
         }
         return 'Médio (3-5 anos)';
     }
@@ -286,16 +339,24 @@
         // Previous button
         paginationHTML += `
             <button onclick="changePage(${currentPage - 1})" 
-                    class="px-4 py-2 rounded-lg ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
+                    class="mobile-pagination-btn px-3 py-2 md:px-4 md:py-2 rounded-lg ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
                 <i class="fas fa-chevron-left"></i>
             </button>
         `;
 
-        // Page numbers
-        for (let i = 1; i <= totalPages; i++) {
+        // Page numbers (show fewer on mobile)
+        const maxVisiblePages = window.innerWidth < 768 ? 5 : 10;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+        
+        if (endPage - startPage + 1 < maxVisiblePages) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
             paginationHTML += `
                 <button onclick="changePage(${i})" 
-                        class="px-4 py-2 rounded-lg ${currentPage === i ? 'bg-green-700 text-white' : 'bg-white text-green-700 hover:bg-green-100'}">
+                        class="mobile-pagination-btn px-3 py-2 md:px-4 md:py-2 rounded-lg ${currentPage === i ? 'bg-green-700 text-white' : 'bg-white text-green-700 hover:bg-green-100'}">
                     ${i}
                 </button>
             `;
@@ -304,7 +365,7 @@
         // Next button
         paginationHTML += `
             <button onclick="changePage(${currentPage + 1})" 
-                    class="px-4 py-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
+                    class="mobile-pagination-btn px-3 py-2 md:px-4 md:py-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
                 <i class="fas fa-chevron-right"></i>
             </button>
         `;
@@ -401,6 +462,18 @@
             button.setAttribute('aria-checked', 'true');
             filterPlants(button.dataset.filter);
         });
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        // Recalculate items per page if needed
+        const newItemsPerPage = window.innerWidth < 768 ? 8 : 12;
+        if (newItemsPerPage !== itemsPerPage) {
+            itemsPerPage = newItemsPerPage;
+            currentPage = 1;
+            displayPlants();
+            updatePagination();
+        }
     });
 
     // Initialize

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Árvores Nativas - SM Mudas</title>
+    <link rel="icon" type="image/png" href="images/Logo 1.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -39,12 +40,54 @@
         .tree-details.expanded {
             max-height: 500px;
         }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .mobile-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .mobile-title {
+                font-size: 1.75rem;
+                line-height: 2rem;
+            }
+            .mobile-search {
+                width: 100%;
+                max-width: none;
+            }
+            .mobile-filters {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .mobile-filter-btn {
+                font-size: 0.875rem;
+                padding: 0.5rem 0.75rem;
+            }
+            .mobile-card {
+                margin-bottom: 1rem;
+            }
+            .mobile-card-title {
+                font-size: 1.125rem;
+            }
+            .mobile-card-desc {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+            }
+            .mobile-pagination {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+            .mobile-pagination-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-30">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-green-700 nav-link">SM Mudas</a>
+            <a href="index.html" class="text-xl md:text-2xl font-bold text-green-700 nav-link">SM Mudas</a>
             <div class="hidden md:flex space-x-6 items-center">
                 <a href="index.html" class="text-green-800 hover:text-yellow-600 nav-link">Home</a>
                 <a href="sobre.html" class="text-green-800 hover:text-yellow-600 nav-link">Sobre Nós</a>
@@ -72,27 +115,27 @@
             </nav>
         </div>
     </header>
-    <main class="container mx-auto px-4 pt-32 pb-16">
-        <h1 class="text-4xl font-bold text-green-800 mb-8 text-center">Catálogo de Árvores Nativas</h1>
+    <main class="container mx-auto px-4 pt-24 md:pt-32 pb-16">
+        <h1 class="mobile-title text-3xl md:text-4xl font-bold text-green-800 mb-6 md:mb-8 text-center">Catálogo de Árvores Nativas</h1>
         
-        <div class="mb-8 space-y-4">
-            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-                <div class="relative w-full md:w-96">
+        <div class="mb-6 md:mb-8 space-y-4">
+            <div class="flex flex-col gap-4">
+                <div class="relative w-full mobile-search">
                     <input type="text" id="searchInput" placeholder="Buscar árvores..." 
-                           class="w-full px-4 py-2 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                           class="w-full px-4 py-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-base">
+                    <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                 </div>
-                <div class="flex gap-2 flex-wrap justify-center">
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="all">
+                <div class="flex gap-2 mobile-filters justify-center">
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition text-sm md:text-base" data-filter="all">
                         Todas
                     </button>
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="ornamentais">
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition text-sm md:text-base" data-filter="ornamentais">
                         Ornamentais
                     </button>
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="medicinais">
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition text-sm md:text-base" data-filter="medicinais">
                         Medicinais
                     </button>
-                    <button class="filter-btn px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-filter="madeira">
+                    <button class="mobile-filter-btn filter-btn px-3 py-2 md:px-4 md:py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition text-sm md:text-base" data-filter="madeira">
                         Madeira Nobre
                     </button>
                 </div>
@@ -104,18 +147,18 @@
             </div>
         </div>
 
-        <div id="treesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+        <div id="treesGrid" class="mobile-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-8">
             <!-- Cards will be inserted here by JavaScript -->
         </div>
 
-        <div id="pagination" class="flex justify-center space-x-2 mt-8">
+        <div id="pagination" class="mobile-pagination flex justify-center space-x-1 md:space-x-2 mt-8">
             <!-- Pagination buttons will be inserted here by JavaScript -->
         </div>
     </main>
     <footer class="bg-green-900 text-white py-8 mt-8">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-lg font-semibold">&copy; 2024 SM Mudas. Todos os direitos reservados.</p>
-            <p class="text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (14) 99893-9719</p>
+            <p class="text-base md:text-lg font-semibold">&copy; 2024 SM Mudas. Todos os direitos reservados.</p>
+            <p class="text-sm md:text-base text-gray-300 mt-2">Rod. Cmte João Ribeiro de Barros, Km 512, Herculândia - SP | (14) 99893-9719</p>
             <p class="text-xs text-gray-400 mt-2">Site desenvolvido por <a href="https://tucanotech.com.br/" target="_blank" class="underline hover:text-yellow-400">Tucano Tech</a></p>
         </div>
     </footer>
@@ -129,7 +172,7 @@
     };
 
     // Configuration
-    const itemsPerPage = 12;
+    const itemsPerPage = window.innerWidth < 768 ? 8 : 12; // Less items on mobile
     let currentPage = 1;
     let filteredTrees = [...nativas];
     let currentFilter = 'all';
@@ -152,34 +195,34 @@
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
         return `
-            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in" 
+            <div class="mobile-card bg-white rounded-xl shadow-md overflow-hidden card-hover fade-in" 
                  data-ornamental="${isOrnamental}" 
                  data-medicinal="${isMedicinal}" 
                  data-noble-wood="${isNobleWood}">
                 <div class="relative">
-                    <img src="${tree.imagem}" alt="${tree.nome}" class="w-full h-48 object-cover">
-                    <div class="absolute top-2 right-2 flex gap-2">
+                    <img src="${tree.imagem}" alt="${tree.nome}" class="w-full h-40 md:h-48 object-cover">
+                    <div class="absolute top-2 right-2 flex gap-1 md:gap-2">
                         ${isOrnamental ? '<span class="px-2 py-1 bg-purple-500 text-white text-xs rounded-full">Ornamental</span>' : ''}
                         ${isMedicinal ? '<span class="px-2 py-1 bg-red-500 text-white text-xs rounded-full">Medicinal</span>' : ''}
                         ${isNobleWood ? '<span class="px-2 py-1 bg-yellow-600 text-white text-xs rounded-full">Madeira Nobre</span>' : ''}
                     </div>
                 </div>
-                <div class="p-4">
-                    <h3 class="text-xl font-semibold text-green-800 mb-2">${tree.nome}</h3>
-                    <p class="text-gray-600 mb-4">${tree.descricao}</p>
-                    <button onclick="toggleDetails(this)" class="text-green-700 hover:text-green-900 font-medium flex items-center gap-2">
+                <div class="p-3 md:p-4">
+                    <h3 class="mobile-card-title text-lg md:text-xl font-semibold text-green-800 mb-2">${tree.nome}</h3>
+                    <p class="mobile-card-desc text-gray-600 mb-3 md:mb-4">${tree.descricao}</p>
+                    <button onclick="toggleDetails(this)" class="text-green-700 hover:text-green-900 font-medium flex items-center gap-2 text-sm md:text-base">
                         <span>Ver detalhes</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="tree-details mt-4">
+                    <div class="tree-details mt-3 md:mt-4">
                         <div class="space-y-2 text-sm text-gray-600">
-                            <p><i class="fas fa-sun text-yellow-500"></i> <strong>Clima:</strong> ${getClimateInfo(tree)}</p>
-                            <p><i class="fas fa-ruler-vertical text-blue-500"></i> <strong>Porte:</strong> ${getSizeInfo(tree)}</p>
-                            <p><i class="fas fa-clock text-purple-500"></i> <strong>Crescimento:</strong> ${getGrowthInfo(tree)}</p>
+                            <p><i class="fas fa-sun text-yellow-500"></i> <strong>Clima:</strong> ${tree.clima || getClimateInfo(tree)}</p>
+                            <p><i class="fas fa-ruler-vertical text-blue-500"></i> <strong>Tamanho:</strong> ${tree.tamanho || getSizeInfo(tree)}</p>
+                            <p><i class="fas fa-clock text-purple-500"></i> <strong>Crescimento:</strong> ${tree.crescimento || getGrowthInfo(tree)}</p>
                         </div>
                         <a href="${whatsappLink}" 
                            target="_blank"
-                           class="mt-4 block w-full text-center px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition">
+                           class="mt-3 md:mt-4 block w-full text-center px-3 py-2 md:px-4 md:py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition text-sm md:text-base">
                             Consultar disponibilidade
                         </a>
                     </div>
@@ -190,6 +233,9 @@
 
     // Helper functions for tree details
     function getClimateInfo(tree) {
+        if (tree.clima) {
+            return tree.clima;
+        }
         if (tree.nome.toLowerCase().includes('açaí') || tree.nome.toLowerCase().includes('pupunha')) {
             return 'Tropical Úmido';
         } else if (tree.nome.toLowerCase().includes('ipê')) {
@@ -199,21 +245,27 @@
     }
 
     function getSizeInfo(tree) {
-        if (tree.nome.toLowerCase().includes('jequitibá')) {
-            return 'Grande (20-30m)';
-        } else if (tree.nome.toLowerCase().includes('quaresmeira')) {
-            return 'Médio (8-12m)';
+        if (tree.tamanho) {
+            return tree.tamanho;
         }
-        return 'Médio-Grande (10-20m)';
+        if (tree.nome.toLowerCase().includes('jequitibá')) {
+            return '60-80 cm';
+        } else if (tree.nome.toLowerCase().includes('quaresmeira')) {
+            return '60-80 cm';
+        }
+        return '60-80 cm';
     }
 
     function getGrowthInfo(tree) {
-        if (tree.nome.toLowerCase().includes('acácia')) {
-            return 'Rápido (2-3 anos)';
-        } else if (tree.nome.toLowerCase().includes('jequitibá')) {
-            return 'Lento (5-7 anos)';
+        if (tree.crescimento) {
+            return tree.crescimento;
         }
-        return 'Médio (3-5 anos)';
+        if (tree.nome.toLowerCase().includes('ipê')) {
+            return 'Médio (5-8 anos)';
+        } else if (tree.nome.toLowerCase().includes('jequitibá')) {
+            return 'Lento (15-25 anos)';
+        }
+        return 'Médio (5-8 anos)';
     }
 
     // Toggle tree details
@@ -233,16 +285,24 @@
         // Previous button
         paginationHTML += `
             <button onclick="changePage(${currentPage - 1})" 
-                    class="px-4 py-2 rounded-lg ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
+                    class="mobile-pagination-btn px-3 py-2 md:px-4 md:py-2 rounded-lg ${currentPage === 1 ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
                 <i class="fas fa-chevron-left"></i>
             </button>
         `;
 
-        // Page numbers
-        for (let i = 1; i <= totalPages; i++) {
+        // Page numbers (show fewer on mobile)
+        const maxVisiblePages = window.innerWidth < 768 ? 5 : 10;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+        
+        if (endPage - startPage + 1 < maxVisiblePages) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
             paginationHTML += `
                 <button onclick="changePage(${i})" 
-                        class="px-4 py-2 rounded-lg ${currentPage === i ? 'bg-green-700 text-white' : 'bg-white text-green-700 hover:bg-green-100'}">
+                        class="mobile-pagination-btn px-3 py-2 md:px-4 md:py-2 rounded-lg ${currentPage === i ? 'bg-green-700 text-white' : 'bg-white text-green-700 hover:bg-green-100'}">
                     ${i}
                 </button>
             `;
@@ -251,7 +311,7 @@
         // Next button
         paginationHTML += `
             <button onclick="changePage(${currentPage + 1})" 
-                    class="px-4 py-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
+                    class="mobile-pagination-btn px-3 py-2 md:px-4 md:py-2 rounded-lg ${currentPage === totalPages ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-green-700 text-white hover:bg-green-800'}">
                 <i class="fas fa-chevron-right"></i>
             </button>
         `;
@@ -342,6 +402,18 @@
             button.classList.add('active');
             filterTrees(button.dataset.filter);
         });
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        // Recalculate items per page if needed
+        const newItemsPerPage = window.innerWidth < 768 ? 8 : 12;
+        if (newItemsPerPage !== itemsPerPage) {
+            itemsPerPage = newItemsPerPage;
+            currentPage = 1;
+            displayTrees();
+            updatePagination();
+        }
     });
 
     // Inicialização
